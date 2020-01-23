@@ -1,7 +1,7 @@
 package com.codeclan.example.coursebookingsystem.controllers;
 
 import com.codeclan.example.coursebookingsystem.models.Course;
-import com.codeclan.example.coursebookingsystem.repositories.CourseRepository;
+import com.codeclan.example.coursebookingsystem.repositories.courseRepository.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
