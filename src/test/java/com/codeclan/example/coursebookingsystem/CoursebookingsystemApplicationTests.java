@@ -10,6 +10,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
@@ -34,15 +36,27 @@ class CoursebookingsystemApplicationTests {
 	void canCreateCourseAndBooking(){
 		Course course = new Course("course1", "Edinburgh", 2);
 		courseRepository.save(course);
-		assertEquals(1, courseRepository.findAll().size());
+		assertEquals(4, courseRepository.findAll().size());
 
 		Customer customer = new Customer("Paolo", "Milano", 29);
 		customerRepository.save(customer);
-		assertEquals(1, customerRepository.findAll().size());
+		assertEquals(4, customerRepository.findAll().size());
 
         Booking booking = new Booking("12-23-2018", course, customer);
         bookingRepository.save(booking);
-        assertEquals(1, bookingRepository.findAll().size());
+        assertEquals(4, bookingRepository.findAll().size());
+	}
+
+	@Test
+    void canGetCourseByRating(){
+	    List<Course> found = courseRepository.findCourseByRating(4);
+	    assertEquals(2, found.size());
+    }
+
+    @Test
+	void canGetCustomersByCourse(){
+		List<Customer> found = customerRepository.findCustomersByBookingsCourseId(1L);
+		assertEquals(2, found.size());
 	}
 
 }
