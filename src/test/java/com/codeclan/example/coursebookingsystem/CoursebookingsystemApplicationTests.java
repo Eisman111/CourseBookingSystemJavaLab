@@ -101,4 +101,10 @@ class CoursebookingsystemApplicationTests {
 		assertEquals("Baby Eduardo", found.get(0).getCustomer().getName());
 	}
 
+	@Test
+	void canGetBookingsByCustomerAgeBetweenAndCourseInitalDerivedQuery(){
+		List<Booking> found = bookingRepository.findAllByCustomerAgeBetweenAndCourseNameIsStartingWith(10, 14, "c");
+		assertEquals("Baby Eduardo", found.get(0).getCustomer().getName());
+	}
+
 }

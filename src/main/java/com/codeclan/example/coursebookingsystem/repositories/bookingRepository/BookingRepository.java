@@ -11,4 +11,5 @@ import java.util.List;
 public interface BookingRepository extends JpaRepository<Booking, Long>, BookingRepositoryCostum {
 
     List<Booking> findBookingByDate(String date);
+    List<Booking> findAllByCustomerAgeBetweenAndCourseNameIsStartingWith(int minAge, int maxAge, String courseInitial);
 }
