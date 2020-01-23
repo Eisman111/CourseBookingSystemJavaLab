@@ -1,8 +1,7 @@
 package com.codeclan.example.coursebookingsystem.controllers;
 
 import com.codeclan.example.coursebookingsystem.models.Booking;
-import com.codeclan.example.coursebookingsystem.repositories.BookingRepository;
-import net.bytebuddy.asm.Advice;
+import com.codeclan.example.coursebookingsystem.repositories.bookingRepository.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

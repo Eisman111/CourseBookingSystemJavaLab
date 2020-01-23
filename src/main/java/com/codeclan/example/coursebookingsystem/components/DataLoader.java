@@ -3,7 +3,7 @@ package com.codeclan.example.coursebookingsystem.components;
 import com.codeclan.example.coursebookingsystem.models.Booking;
 import com.codeclan.example.coursebookingsystem.models.Course;
 import com.codeclan.example.coursebookingsystem.models.Customer;
-import com.codeclan.example.coursebookingsystem.repositories.BookingRepository;
+import com.codeclan.example.coursebookingsystem.repositories.bookingRepository.BookingRepository;
 import com.codeclan.example.coursebookingsystem.repositories.courseRepository.CourseRepository;
 import com.codeclan.example.coursebookingsystem.repositories.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
