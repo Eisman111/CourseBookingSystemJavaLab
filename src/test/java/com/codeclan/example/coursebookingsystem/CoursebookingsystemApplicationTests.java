@@ -59,4 +59,16 @@ class CoursebookingsystemApplicationTests {
 		assertEquals(2, found.size());
 	}
 
+	@Test
+	void canGetAllCourseByCustomer(){
+		List<Course> found = courseRepository.findCoursesByBookingsCustomerId(1L);
+		assertEquals(1, found.size());
+	}
+
+	@Test
+	void canGetBookingsByDate(){
+		List<Booking> found = bookingRepository.findBookingByDate("12-23-2020");
+		assertEquals(2, found.size());
+	}
+
 }
