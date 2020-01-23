@@ -36,21 +36,21 @@ class CoursebookingsystemApplicationTests {
 	void canCreateCourseAndBooking(){
 		Course course = new Course("course1", "Edinburgh", 2);
 		courseRepository.save(course);
-		assertEquals(4, courseRepository.findAll().size());
+		assertEquals(5, courseRepository.findAll().size());
 
 		Customer customer = new Customer("Paolo", "Milano", 29);
 		customerRepository.save(customer);
-		assertEquals(4, customerRepository.findAll().size());
+		assertEquals(5, customerRepository.findAll().size());
 
         Booking booking = new Booking("12-23-2018", course, customer);
         bookingRepository.save(booking);
-        assertEquals(4, bookingRepository.findAll().size());
+        assertEquals(6, bookingRepository.findAll().size());
 	}
 
 	@Test
     void canGetCourseByRating(){
 	    List<Course> found = courseRepository.findCourseByRating(4);
-	    assertEquals(2, found.size());
+	    assertEquals(3, found.size());
     }
 
     @Test
@@ -69,6 +69,24 @@ class CoursebookingsystemApplicationTests {
 	void canGetBookingsByDate(){
 		List<Booking> found = bookingRepository.findBookingByDate("12-23-2020");
 		assertEquals(2, found.size());
+	}
+
+	@Test
+	void canGetCustomerForGivenTownAndCourse(){
+		List<Customer> found = customerRepository.findCustomerByBookingsCourseIdAndTown(2, "Milano");
+		assertEquals("Eduardo", found.get(0).getName());
+	}
+
+	@Test
+	void canGetCustomersForGivenTownAndCourseAndAgeGreater(){
+		List<Customer> found = customerRepository.findAllByTownAndBookingsCourseIdAndAgeGreaterThan("Milano", 4, 18);
+		assertEquals(1, found.size());
+	}
+
+	@Test
+	void cannotGetCustomersForGivenTownAndCourseAndAgeGreater(){
+		List<Customer> found = customerRepository.findAllByTownAndBookingsCourseIdAndAgeGreaterThan("Milano", 4, 50);
+		assertEquals(0, found.size());
 	}
 
 }

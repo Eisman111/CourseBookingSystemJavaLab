@@ -21,8 +21,19 @@ public class CustomerController {
         this.customerRepository = customerRepository;
     }
 
-    @GetMapping(value = "/courses/{course_id}")
-    public List<Customer> getAllCustomersByCourse(@PathVariable long course_id){
-        return customerRepository.findCustomersByBookingsCourseId(course_id);
+    @GetMapping(value = "/courses/{courseId}")
+    public List<Customer> getAllCustomersByCourse(@PathVariable long courseId){
+        return customerRepository.findCustomersByBookingsCourseId(courseId);
+    }
+
+    @GetMapping(value = "/town/{town}/course/{courseId}")
+    public List<Customer> getAllCustomersByTownAndCourse(@PathVariable String town, @PathVariable long courseId){
+        return customerRepository.findCustomerByBookingsCourseIdAndTown(courseId, town);
+    }
+
+    @GetMapping(value = "/town/{town}/course/{courseId}/ageGreater/{age}")
+    public List<Customer> getAllCustomersForGivenTownAndCourseAndAgeGreater
+            (@PathVariable String town, @PathVariable long courseId, @PathVariable int age){
+        return customerRepository.findAllByTownAndBookingsCourseIdAndAgeGreaterThan(town, courseId, age);
     }
 }
