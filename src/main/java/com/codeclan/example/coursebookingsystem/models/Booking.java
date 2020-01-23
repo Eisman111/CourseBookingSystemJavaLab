@@ -17,13 +17,28 @@ public class Booking {
     @JoinColumn(name = "course_id", nullable = false)
     private Course course;
 
+    @JsonIgnoreProperties("bookings")
+    @ManyToOne
+    @JoinColumn(name = "customer_id", nullable = false)
+    private Customer customer;
+
+
     private String date;
 
     public Booking(){}
 
-    public Booking(String date, Course course) {
+    public Booking(String date, Course course, Customer customer) {
         this.date = date;
         this.course = course;
+        this.customer = customer;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public Course getCourse() {

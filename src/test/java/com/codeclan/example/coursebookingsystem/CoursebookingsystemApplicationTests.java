@@ -36,13 +36,13 @@ class CoursebookingsystemApplicationTests {
 		courseRepository.save(course);
 		assertEquals(1, courseRepository.findAll().size());
 
-		Booking booking = new Booking("12-23-2018", course);
-		bookingRepository.save(booking);
-		assertEquals(1, bookingRepository.findAll().size());
-
 		Customer customer = new Customer("Paolo", "Milano", 29);
 		customerRepository.save(customer);
 		assertEquals(1, customerRepository.findAll().size());
+
+        Booking booking = new Booking("12-23-2018", course, customer);
+        bookingRepository.save(booking);
+        assertEquals(1, bookingRepository.findAll().size());
 	}
 
 }
