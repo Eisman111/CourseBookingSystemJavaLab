@@ -1,5 +1,7 @@
 package com.codeclan.example.coursebookingsystem.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,12 +12,26 @@ public class Booking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @JsonIgnoreProperties("bookings")
+    @ManyToOne
+    @JoinColumn(name = "course_id", nullable = false)
+    private Course course;
+
     private String date;
 
     public Booking(){}
 
-    public Booking(String date) {
+    public Booking(String date, Course course) {
         this.date = date;
+        this.course = course;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
     }
 
     public long getId() {

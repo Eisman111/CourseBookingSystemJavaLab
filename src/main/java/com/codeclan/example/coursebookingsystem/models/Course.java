@@ -1,6 +1,8 @@
 package com.codeclan.example.coursebookingsystem.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "courses")
@@ -14,12 +16,24 @@ public class Course {
     private String towm;
     private int rating;
 
+    @OneToMany(mappedBy = "course", fetch = FetchType.LAZY)
+    private List<Booking> bookings;
+
     public Course(){}
 
     public Course(String name, String towm, int rating) {
         this.name = name;
         this.towm = towm;
         this.rating = rating;
+        this.bookings = new ArrayList<>();
+    }
+
+    public List<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(List<Booking> bookings) {
+        this.bookings = bookings;
     }
 
     public long getId() {
